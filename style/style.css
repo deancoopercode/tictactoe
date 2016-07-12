@@ -1,0 +1,95 @@
+/*------------------------------
+|         580px                |
+|--------------------|---------|
+|   380px (400px)    |         |
+|---------|----------|---------|
+|  180px  |          |         |
+|         |          |         |
+--------------------------------
+600px
+gutter is 20px
+
+
+
+
+target / context
+
+start with mobile first then go to desktop
+easier that way.
+*/
+* {
+  box-sizing:border-box;
+}
+
+
+.squareMouseOver {
+  background-color: green;
+}
+
+
+
+.player1Choice {
+  background-image: url("../images/bunny.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+}
+
+
+.player2Choice {
+  background-image: url("../images/bear.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+}
+
+section#board {
+  width: 350px;;
+  height: 350px;
+  margin 0 auto;
+  border: 5px solid black;
+  float: left;
+}
+body {
+  width: 100%;
+  margin: 0 auto;
+}
+.square{
+  min-height 100px;
+  height: 32%;
+  width: 32%;
+  float: left;
+  border: 1px solid gray;
+  margin: 0 auto;
+  box-shadow: inset 0 -1px 0 0 #046ca3, inset 0 1px 0 0 #046ca3, 0 1px 0 0 #046ca3, 0 -1px 0 0 #046ca3;
+  /* entire page is  floated so its ok */
+  /* margin-right:     20px; */
+/*  margin-right: 3.333333%; */
+  /* inlibe block isnt exact, you have to have hacks
+  divs on the extra line etc, space inbetween
+  */
+
+
+}
+
+
+
+@media (min-width: 40em) {
+  /* margin trick doesnt really work with floats */
+
+
+    .square {
+      /*margin-right: 3.333333%;*/
+    }
+    .square{
+      /*width: 30%;*/
+    }
+
+}
+
+@media (min-width: 80em) {
+  body {
+    background-color: plum;
+    width: 80%;
+  }
+}
