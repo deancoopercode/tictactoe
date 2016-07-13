@@ -1,11 +1,11 @@
 
 
-//float ... 25 .. 33 ..
+/*//float ... 25 .. 33 ..
 
 target / context
 
 start with mobile first then go to desktop
-easier that way.
+easier that way.*/
 /* entire page is  floated so its ok */
 /* margin-right:     20px; */
 /*  margin-right: 3.333333%; */
@@ -13,21 +13,73 @@ easier that way.
 divs on the extra line etc, space inbetween
 */
 
+@font-face {
+    font-family: retroFont;
+    src: url("../fonts/arcade.ttf");
+}
+
+@font-face {
+    font-family: retroFont2;
+    src: url("../fonts/SF Atarian System Bold.ttf");
+}
+
 * {
-  box-sizing:border-box;
+  box-sizing: border-box;
 }
 
 
 
-//clear the float
+h1 {
+  font-family: retroFont2;
+  font-size: 2em;
+  text-align: center;
+  color: white;
+}
+h3 {
+  /*font-family: 'Bungee Shade', cursive;*/
+    font-family: retroFont;
+  font-size: 1em;
+}
+#player1Section, #player2Section {
+  border: 2px solid red;
+  width: 10%;
+  height: 350px;
+  display: inline-block;
+  vertical-align: top;
+}
 
 body {
+    background-color: #668cff;
+}
+/* raining in the forest */
+#game {
   margin: 0 auto;
+  min-width: 500px;
+  /*background-image: url("../images/bg-page.jpg");*/
+text-align: center;
+
 }
 .messages {
   clear: left;
 }
 
+
+#player1Image {
+  background-image: url("../images/bunny.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+  height: 30px;
+  width: 30px;
+}
+
+#board {
+  display: inline-block;
+  border: 1px solid black;
+  width: 300px;
+  height: 300px;
+  margin: 0 auto;
+}
 .squareMouseOver {
   background-color: green;
 }
@@ -47,28 +99,38 @@ body {
   background-position: center;
 }
 
-section#board {
-  width: 350px;;
-  height: 350px;
-  margin 0 auto;
-  border: 5px solid black;
-  float: left;
-}
+
+/*//0.5 % margin each side.. so then height and width 32%?*/
+
 body {
-  width: 100%;
+  width: 80%;
   margin: 0 auto;
 }
+
+.square:hover {
+  background-color: rgb(191, 191, 191);
+}
+
+
 .square{
-  min-height 100px;
-  height: 32%;
-  width: 32%;
+  /*box-sizing: border-box;*/
+
+  height: 31.333%;
+  width: 31.333%;
+
+  margin: 1%;
+  /*//margin-left: 0.5%;
+  margin-right: 0.5%;*/
   float: left;
-  border: 1px solid gray;
-  margin: 0 auto;
-  box-shadow: inset 0 -1px 0 0 #046ca3, inset 0 1px 0 0 #046ca3, 0 1px 0 0 #046ca3, 0 -1px 0 0 #046ca3;
+  border: 2px solid black;
+  transition: .3s;
+  /*margin: 0 auto;*/
+  /*box-shadow: inset 0 -1px 0 0 #046ca3, inset 0 1px 0 0 #046ca3, 0 1px 0 0 #046ca3, 0 -1px 0 0 #046ca3;*/
 
 }
-
+/*
+div:hover doesnt work for touch screens
+*/
 
 
 @media (min-width: 40em) {
@@ -86,7 +148,7 @@ body {
 
 @media (min-width: 80em) {
   body {
-    background-color: plum;
-    width: 80%;
+    /*background-color: plum;
+    width: 80%;*/
   }
 }

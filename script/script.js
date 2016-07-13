@@ -14,6 +14,8 @@ function setUpGame() {
       $board.append($square);
       arrayMatrix.push('none');
   }
+  $square = $('<div style="clear:left;">');
+  $board.append($square);
 
 }
 
@@ -35,12 +37,12 @@ function displayMessage(message) {
 function squareMouseOver(event) {
   //console.log('squareMouseOver (target, id)', event.target, event.id);
   //$(event.target).removeClass();
-  $(event.target).addClass( "squareMouseOver" );
+//  $(event.target).addClass( "squareMouseOver" );
 }
 
 function squareMouseOut(event) {
   //console.log('squareMouseOut (target, id)', event.target, event.id);
-  $(event.target).removeClass("squareMouseOver");
+  //$(event.target).removeClass("squareMouseOver");
   // $(event.target).addClass( "squareMouseOut" );
 }
 
@@ -74,7 +76,7 @@ function squareMouseClick(event) {
  function styleWinner(winningPlayer, winningSelections) {
    winningSelections.forEach(function (e) {
    var jquerySelector = 'body section div#' + e;
-     $(jquerySelector).css('border', '2px solid black');
+     //$(jquerySelector).css('border', '2px solid black');
    })
    //displayMessage(winningPlayer + ' wins');
  }
