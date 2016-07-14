@@ -2,15 +2,86 @@
 
 var playersTurn = "player1";
 var sideSectionContent = $('#sideSectionContent');
-var newGameButton = $('#newGameButton');
+
 var gameIsOver = false;
 var $board = $('#board');
+
+var bunnyImgLoc = "images/bunny.png";
+var foxImgLoc = "images/fox-new.png";
+
+//possible snake display divs.
+var $snakeAwaitingTurn = $('#snakeAwaitingTurn');
+var $snakePlayerSelection = $('#snakePlayerSelection');
+var $snakeGameOver = $('#snakeGameOver');
+var $snakeSquareTaken = $('#snakeSquareTaken');
+var $snakeTieGame = $('#snakeTieGame');
+
+
+var $game1PlayerButton = $('#game1PlayerButton');
+var $game2PlayerButton = $('#game2PlayerButton');
+// var $newGameButton = $('#newGameButton');
+
+
+var $sideScoreP1 = $('#sideScoreP1');
+var $sideScoreP2 = $('#sideScoreP2');
+
+
+
+// var player1Wins = 0;
+// var player2Wins = 0;
+var boardMoves = 0;
+
+
+
+
+
+function moveIsTaken() {
+  console.log('moveIsTaken');
+  $snakeAwaitingTurn.hide();
+
+  $snakeSquareTaken
+  .find('.snakeText')
+  .text((playersTurn == "player1" ? "Player 1 " : " Player 2 ") + " , try another square");
+
+
+  $snakeSquareTaken.show();
+}
+
+
+function switchPlayer() {
+  console.log('switchPlayer');
+  $snakeAwaitingTurn
+  .find('.snakeText')
+  .text((playersTurn == "player1" ? "Player 1 " : " Player 2 ") + " , Its your go!");
+
+  $snakeAwaitingTurn
+  .find('#snakeAwaitingTurnImg img')
+  .attr('src', playersTurn == "player1" ? bunnyImgLoc : foxImgLoc);
+
+  $snakeSquareTaken.hide();
+  $snakeAwaitingTurn.show();
+}
 
 
 function setUpGame() {
   var $square;
   arrayMatrix = [];
   playersTurn = "player1";
+
+  // player1Wins = 0;
+  // player2Wins = 0;
+  // $sideScoreP1.text(0);
+  // $sideScoreP2.text(0);
+  boardMoves = 0;
+
+  //Hide all snake display divs.
+  $snakeTieGame.hide();
+  $snakePlayerSelection.hide();
+  $snakeGameOver.hide();
+  $snakeSquareTaken.hide();
+  switchPlayer();
+
+
 
   var noOfSquares = boardDepth * boardDepth;
   $board.empty();
@@ -37,9 +108,9 @@ function setUpGame() {
 // }
 
 
-function displayMessage(message) {
-  sideSectionContent.text(message);
-}
+// function displayMessage(message) {
+//   sideSectionContent.text(message);
+// }
 
 
 function squareMouseOver(event) {
@@ -55,13 +126,43 @@ function squareMouseOut(event) {
 }
 
 function squareMouseClick(event) {
-  $(event.target).removeClass("squareMouseOver");
+  // $(event.target).removeClass("squareMouseOver");
+  console.log('squareMouseClick');
+
+
+  //is the game aleady over? if so just ignore the clicks!!
+  if (($snakeGameOver.is(":visible") === true) ||
+  ($snakeTieGame.is(":visible") === true))
+  {
+    console.log('game is already over. ');
+    return;
+  }
+
+  // if (boardMoves === 9) {
+  //   console.log('its a tie!');
+  //   $snakeTieGame.show();
+  //   $snakePlayerSelection.hide();
+  //   $snakeSquareTaken.hide();
+  //   return;
+  // }
+
 
   if (isMoveTaken(event.target.id)) {
-    displayMessage("Move is Taken..")
+    moveIsTaken();
+    return;
+    //displayMessage("Move is Taken..")
   }
   else {
     logMove(event.target.id, playersTurn);
+    console.log('boardMoves',boardMoves);
+
+
+
+
+
+
+
+
     if (playersTurn === "player1") {
       $(event.target).addClass("player1Choice");
       playersTurn = "player2";
@@ -71,22 +172,70 @@ function squareMouseClick(event) {
       playersTurn = "player1";
     }
   }
-  $(event.target).removeClass("squareMouseOver");
 
+
+  if (boardMoves === 9) {
+    console.log('its a tie!');
+    $snakeTieGame.show();
+    $snakePlayerSelection.hide();
+    $snakeSquareTaken.hide();
+    $snakeAwaitingTurn.hide();
+    return;
+  }
+
+
+
+  // $(event.target).removeClass("squareMouseOver");
+  console.log('running determineGameStatus');
   var status = determineGameStatus();
   if (status != -1) {
-    console.log(status.winner, status.selections);
+    console.log('WINNER', status.winner, status.selections);
     styleWinner(status.winner, status.selections);
+  }
+  else {
+    console.log('switch player');
+    switchPlayer();
   }
 }
 
 
  function styleWinner(winningPlayer, winningSelections) {
+   console.log('styleWinner');
+
    winningSelections.forEach(function (e) {
    var jquerySelector = 'body section div#' + e;
      $(jquerySelector).css('border', '5px solid black');
    })
-   displayMessage(winningPlayer + ' wins');
+   //displayMessage(winningPlayer + ' wins');
+
+   $snakePlayerSelection.hide();
+    //$snakeGameOver.show();
+   $snakeSquareTaken.hide();
+   $snakeAwaitingTurn.hide();
+
+   $snakeGameOver
+   .show()
+   .find('.snakeText')
+   .text((winningPlayer == "player1" ? "Player 1 " : " Player 2 ") + " , you WON!");
+
+   if (winningPlayer == "player1") {
+      $sideScoreP1.html( function(i, oldval) {
+      return ++oldval;
+      });
+    //  player1Wins++;
+    //  $sideScoreP1.val(player1Wins)
+   }
+   else {
+      $sideScoreP2.html( function(i, oldval) {
+      return ++oldval;
+      });
+    //  player2Wins++;
+    //  $sideScoreP2.val(player2Wins)
+   }
+
+
+  // console.log('player1',player1Wins,winningPlayer);
+  // console.log('player2',player2Wins,winningPlayer);
  }
 
 function newGameClick() {
@@ -94,15 +243,13 @@ function newGameClick() {
   setUpGame();
 }
 
-
-
-
-
-
 setUpGame();
 
 
 $('.square').on('mouseover', squareMouseOver);
 $('.square').on('mouseout', squareMouseOut);
+
+
+$('.playAgainButton').on('click', newGameClick);
 
 $('#newGameButton').on('click', newGameClick);

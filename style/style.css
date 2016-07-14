@@ -41,7 +41,13 @@ divs on the extra line etc, space inbetween
   box-sizing: border-box;
 }
 
-
+#game1PlayerButton, #game2PlayerButton,#playAgainButton, .playAgainButton {
+  width: 100px;
+  height: 40px;
+  margin: 5px;
+  color: white;
+  background-color: #a3781c;
+}
 
 h1 {
   font-family: 'Indie Flower', cursive;
@@ -53,6 +59,7 @@ h1 {
     1px -1px 0 #FFF,
     -1px 1px 0 #FFF,
     1px 1px 0 #FFF;
+    margin: 10px;
 }
 /*   text-shadow: 0 0 3px #FF0000, 0 0 5px #0000FF; */
 h3 {
@@ -71,13 +78,72 @@ h3 {
   background-repeat: no-repeat;
 }
 
+#bottomSection {
+  width: 150px;
+  height: 140px;
+  display: inline-block;
+  background-image: url("../images/snake.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-left: 20px;
+  /*transform: scaleX(-1);*/
+}
 
+#bottom {
+  width: 100%;
+  vertical-align: top;
+  margin-top: 30px;
+}
+#bottomCentreSection{
+  display: inline-block;
+  font-size: 1.5em;
+  border: 1px solid black;
+  width: 300px;
+  height: 100px;
+  margin: 0 auto;
+  /*background-color: rgba(28, 81, 73, 0);*/
+  background-color: white;
+  /*#1c5149;
+  rgba(28, 81, 73, 0);*/
+  vertical-align: top;
+  border-radius: 15px 15px 15px 15px;
+}
 #newGameButton {
   background-color: darkblue;
   color: white;
   width: 100px;
   height: 40px;
 }
+
+/*
+#snake {
+  width: 100px;
+  height: 100px;
+  text-align: right;
+}
+
+#snakeSection {
+
+  width: 250px;
+  height: 240px;
+  display: inline-block;
+  vertical-align: bottom;
+}
+#snakeSeection img {
+  width: 100%;
+   transform: scaleX(-1);
+
+}
+
+#test {
+  width: 150px;
+  height: 110px;
+  display: inline-block;
+  vertical-align: top;
+  background-color: black;
+}*/
+
+
 #sideSectionContent {
   position: relative;
   left: 107px;
@@ -113,6 +179,14 @@ h3 {
   background-position: center;
 }
 
+#snakeAwaitingTurn  {
+    text-align: center;
+}
+#snakeAwaitingTurn img{
+      width: 72px;
+    height: 72px;
+    text-align: center;
+}
 #sideImgP2 {
   float: left;
   width: 50%;
@@ -155,6 +229,8 @@ text-align: center;
 }
 
 #board {
+  border-radius: 20px 20px 20px 20px;
+  padding: 5px;
   display: inline-block;
   border: 1px solid black;
   width: 350px;
@@ -208,7 +284,8 @@ body {
   /*//margin-left: 0.5%;
   margin-right: 0.5%;*/
   float: left;
-  /*border: 2px solid brown;*/
+    /*border-radius: 5px 5px 5px 5px;*/
+  border: 1px solid gray;
   transition: .3s;
   /*margin: 0 auto;*/
   /*box-shadow: inset 0 -1px 0 0 #046ca3, inset 0 1px 0 0 #046ca3, 0 1px 0 0 #046ca3, 0 -1px 0 0 #046ca3;*/
@@ -224,14 +301,14 @@ div:hover doesnt work for touch screens
   background-size: 100%;
   background-position: center;
   background-color: darkgreen;
-  border: 1px solid black;
+  border: 1px solid white;
 }
 
 
 .player2Choice {
   background-image: url("../images/fox-new.png");
   background-repeat: no-repeat;
-  background-size: 100%;
+  background-size: 93%;
   background-position: center;
   background-color: darkgreen;
   border: 1px solid white;

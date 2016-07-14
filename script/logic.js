@@ -116,6 +116,7 @@ function isMoveTaken(position)
 
 function logMove(position, player) {
   arrayMatrix[position] = player;
+  boardMoves++;
 }
 
 //3 * 3 array
