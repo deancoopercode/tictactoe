@@ -1,12 +1,20 @@
 
-//'player1', 'player2', 'none'
+
 var playersTurn = "player1";
+var sideSectionContent = $('#sideSectionContent');
+var newGameButton = $('#newGameButton');
+var gameIsOver = false;
+var $board = $('#board');
 
 
 function setUpGame() {
-  var $board = $('#board');
   var $square;
+  arrayMatrix = [];
+  playersTurn = "player1";
+
   var noOfSquares = boardDepth * boardDepth;
+  $board.empty();
+  gameIsOver = false;
 
   for(var index = 0;index < noOfSquares;index++) {
       $square = $('<div>', {id:index, class:"square"});
@@ -16,7 +24,7 @@ function setUpGame() {
   }
   $square = $('<div style="clear:left;">');
   $board.append($square);
-
+  $('.square').on('click', squareMouseClick);
 }
 
 // function isSquareOccupied(square) {
@@ -30,7 +38,7 @@ function setUpGame() {
 
 
 function displayMessage(message) {
-  var $liToChange = $('#messages').text(message);
+  sideSectionContent.text(message);
 }
 
 
@@ -50,7 +58,7 @@ function squareMouseClick(event) {
   $(event.target).removeClass("squareMouseOver");
 
   if (isMoveTaken(event.target.id)) {
-    displayMessage("Invalid Choice, please try again")
+    displayMessage("Move is Taken..")
   }
   else {
     logMove(event.target.id, playersTurn);
@@ -76,14 +84,25 @@ function squareMouseClick(event) {
  function styleWinner(winningPlayer, winningSelections) {
    winningSelections.forEach(function (e) {
    var jquerySelector = 'body section div#' + e;
-     //$(jquerySelector).css('border', '2px solid black');
+     $(jquerySelector).css('border', '5px solid black');
    })
-   //displayMessage(winningPlayer + ' wins');
+   displayMessage(winningPlayer + ' wins');
  }
+
+function newGameClick() {
+  console.log('new gamee');
+  setUpGame();
+}
+
+
+
+
+
 
 setUpGame();
 
 
 $('.square').on('mouseover', squareMouseOver);
 $('.square').on('mouseout', squareMouseOut);
-$('.square').on('click', squareMouseClick);
+
+$('#newGameButton').on('click', newGameClick);

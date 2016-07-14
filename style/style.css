@@ -44,15 +44,15 @@ divs on the extra line etc, space inbetween
 
 
 h1 {
-  font-family: forest1;
-  font-size: 2.5em;
+  font-family: 'Indie Flower', cursive;
+  font-size: 3em;
   text-align: center;
-  color: #ffd699;
+  color: #633800;
   text-shadow:
-    -3px -3px 0 #663d00,
-    2px -2px 0 #663d00,
-    -2px 2px 0 #663d00,
-    2px 2px 0 #663d00;
+    -2px -2px 0 #FFF,
+    1px -1px 0 #FFF,
+    -1px 1px 0 #FFF,
+    1px 1px 0 #FFF;
 }
 /*   text-shadow: 0 0 3px #FF0000, 0 0 5px #0000FF; */
 h3 {
@@ -60,17 +60,77 @@ h3 {
     font-family: retroFont;
   font-size: 1em;
 }
-#player1Section, #player2Section {
-  border: 2px solid red;
-  width: 10%;
-  height: 350px;
+#sideSection {
+
+  width: 250px;
+  height: 240px;
   display: inline-block;
-  vertical-align: top;
-  background-color: brown;
+  vertical-align: bottom;
+  background-image: url("../images/monkey.png");
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
+
+#newGameButton {
+  background-color: darkblue;
+  color: white;
+  width: 100px;
+  height: 40px;
+}
+#sideSectionContent {
+  position: relative;
+  left: 107px;
+  top: 120px;
+
+  width: 80px;
+  height: 92px;
+  padding: 0;
+  margin: 0;
+  vertical-align: top;
+  /*background-color: red;*/
+}
+
+
+#sideScoreP1, #sideScoreP2 {
+  font-size: 2em;
+  float: left;
+  width: 50%;
+  text-shadow:
+    -2px -2px 0 #DDD,
+    1px -1px 0 #DDD,
+    -1px 1px 0 #DDD,
+    1px 1px 0 #DDD;
+}
+#sideImgP1 {
+  float: left;
+  width: 50%;
+  /*background-color: green;*/
+  height: 50px;
+  background-image: url("../images/bunny.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+}
+
+#sideImgP2 {
+  float: left;
+  width: 50%;
+  /*background-color: blue;*/
+  height: 50px;
+  background-image: url("../images/fox-new.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+}
+
+#scoreBoard {
+  width: 200px;
+  height: 200px;
+}
 body {
     /*background-color: #668cff;*/
+      min-width: 785px;
 }
 /* raining in the forest */
 #game {
@@ -100,24 +160,29 @@ text-align: center;
   width: 350px;
   height: 350px;
   margin: 0 auto;
-  background-color: #ffeee6;
+  /*background-color: rgba(28, 81, 73, 0);*/
+  background-color: #053830;
+  /*#1c5149;
+  rgba(28, 81, 73, 0);*/
 }
 .squareMouseOver {
   background-color: green;
 }
 
-
+.sideMonkeyImage {
+  float: left;
+}
 
 /*//0.5 % margin each side.. so then height and width 32%?*/
 /*transparent bg withgimp*/
 
-#messages {
+/*#messages {
   background-image: url("../images/monkey.png");
   background-size: cover;
   background-repeat: no-repeat;
   width: 250px;
   height: 250px;
-}
+}*/
 
 
 body {
@@ -138,12 +203,12 @@ body {
 
   height: 31.333%;
   width: 31.333%;
-  background-color: #00cc00;
+  /*background-color: #00cc00;*/
   margin: 1%;
   /*//margin-left: 0.5%;
   margin-right: 0.5%;*/
   float: left;
-  border: 2px solid brown;
+  /*border: 2px solid brown;*/
   transition: .3s;
   /*margin: 0 auto;*/
   /*box-shadow: inset 0 -1px 0 0 #046ca3, inset 0 1px 0 0 #046ca3, 0 1px 0 0 #046ca3, 0 -1px 0 0 #046ca3;*/
@@ -159,15 +224,17 @@ div:hover doesnt work for touch screens
   background-size: 100%;
   background-position: center;
   background-color: darkgreen;
+  border: 1px solid black;
 }
 
 
 .player2Choice {
-  background-image: url("../images/fox1.jpg");
+  background-image: url("../images/fox-new.png");
   background-repeat: no-repeat;
-  background-size: 80%;
+  background-size: 100%;
   background-position: center;
   background-color: darkgreen;
+  border: 1px solid white;
 }
 
 @media (min-width: 40em) {

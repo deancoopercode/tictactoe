@@ -6,8 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>TTT</title>
   <link rel="stylesheet" href="style/style.css">
-  <link href='https://fonts.googleapis.com/css?family=Bungee+Shade' rel='stylesheet' type='text/css'>
-
+  <!-- <link href='https://fonts.googleapis.com/css?family=Bungee+Shade' rel='stylesheet' type='text/css'> -->
+  <link href='https://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
 </head>
 <body>
 <section id="game">
@@ -17,22 +17,25 @@
   </header>
 
     <!-- //div container width of the game -->
-  <section id="player1Section">
-    <h3>Player 1</h3>
-    <div id="player1Image"> </div>
-    <div id="player1Scoreboard">1 score board</div>
+  <section id="sideSection">
+    <div id="sideSectionContent">
+
+    <div id="sideImgP1"></div>
+    <div id="sideImgP2"></div>
+    <div id="sideScoreP1">2</div>
+    <div id="sideScoreP2">1</div>
+      <!-- <img id="sideMonkeyImage" src="images/monkey.png"> -->
+
+    </div>
   </section>
   <section id="board">
   <!-- squares will be added here in Javascript -->
   </section>
-  <section id="player2Section">
-    <h3>Player 2</h3>
-      <div id="player2Image"> </div>
-      <div id="player1Scoreboard"> 2score board</div>
-  </section>
+
   <section style="clear: left;">
-    <div id="messages">test
-      
+    <div id="messages">
+      <button id="newGameButton">New Game</button>
+
     </div>
   </section>
 </section>
