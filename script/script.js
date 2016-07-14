@@ -5,6 +5,7 @@ var sideSectionContent = $('#sideSectionContent');
 
 var gameIsOver = false;
 var $board = $('#board');
+var numberOfPlayers;
 
 var bunnyImgLoc = "images/bunny.png";
 var foxImgLoc = "images/fox-new.png";
@@ -37,7 +38,7 @@ function moveIsTaken() {
 }
 
 function switchPlayer() {
-  console.log('switchPlayer');
+  console.log('switchPlayer', playersTurn);
   $snakeAwaitingTurn
   .find('.snakeText')
   .text((playersTurn == "player1" ? "Player 1 " : " Player 2 ") + " , Its your go!");
@@ -48,7 +49,27 @@ function switchPlayer() {
 
   $snakeSquareTaken.hide();
   $snakeAwaitingTurn.show();
+  $snakePlayerSelection.hide();
+
+  if ((numberOfPlayers === 1) && (playersTurn === "player2")){
+    //make a computer move...
+
+    makeComputerMove();
+  }
 }
+
+
+function makeComputerMove() {
+
+  console.log('DECODE MOVE');
+  var move = decideMove();
+
+  logMove(move, 'player2');
+  $('#'+move).addClass("player2Choice");
+  playersTurn = "player1";
+  continueGame();
+}
+
 
 function setUpGame() {
   var $square;
@@ -61,7 +82,13 @@ function setUpGame() {
   $snakePlayerSelection.hide();
   $snakeGameOver.hide();
   $snakeSquareTaken.hide();
-  switchPlayer();
+
+  //computer player code.
+  $snakePlayerSelection.show()
+  $snakeAwaitingTurn.hide();
+  numberOfPlayers = 0;
+  //switchPlayer();
+
 
   var noOfSquares = boardDepth * boardDepth;
   $board.empty();
@@ -75,10 +102,16 @@ function setUpGame() {
   $square = $('<div style="clear:left;">');
   $board.append($square);
   $('.square').on('click', squareMouseClick);
+  initValues(); //other js file.
 }
 
 function squareMouseClick(event) {
 
+
+  //is number of players not chosen yet?
+  if (numberOfPlayers === 0) {
+    return;
+  }
   //is the game aleady over? if so just ignore the clicks!!
   if (($snakeGameOver.is(":visible") === true) ||
   ($snakeTieGame.is(":visible") === true)){
@@ -103,8 +136,28 @@ function squareMouseClick(event) {
       playersTurn = "player1";
     }
   }
+  continueGame();
 
-  console.log('running determineGameStatus');
+  // console.log('running determineGameStatus');
+  // var status = determineGameStatus();
+  // if (status != -1) {
+  //   styleWinner(status.winner, status.selections);
+  // }
+  // else {
+  //   if (boardMoves === 9) {
+  //     $snakeTieGame.show();
+  //     $snakePlayerSelection.hide();
+  //     $snakeSquareTaken.hide();
+  //     $snakeAwaitingTurn.hide();
+  //     return;
+  //   }
+  //   switchPlayer();
+  // }
+}
+
+function continueGame() {
+  console.log('continueGame START');
+
   var status = determineGameStatus();
   if (status != -1) {
     styleWinner(status.winner, status.selections);
@@ -155,9 +208,26 @@ function newGameClick() {
   setUpGame();
 }
 
+
+function playerSelectionClick(event) {
+  console.log('playerSelectionClick', event.target.id);
+
+  if (event.target.id === "game1PlayerButton") {
+    numberOfPlayers = 1;
+  }
+  else {
+    //2 player (humans)
+    numberOfPlayers = 2;
+  }
+  switchPlayer();
+}
+
 setUpGame();
 
 
 
 $('.playAgainButton').on('click', newGameClick);
 $('#newGameButton').on('click', newGameClick);
+
+$('#game1PlayerButton').on('click', playerSelectionClick);
+$('#game2PlayerButton').on('click', playerSelectionClick);
