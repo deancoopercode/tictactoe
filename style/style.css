@@ -1,38 +1,4 @@
 
-
-/*//float ... 25 .. 33 ..
-
-target / context
-
-start with mobile first then go to desktop
-easier that way.*/
-/* entire page is  floated so its ok */
-/* margin-right:     20px; */
-/*  margin-right: 3.333333%; */
-/* inlibe block isnt exact, you have to have hacks
-divs on the extra line etc, space inbetween
-*/
-
-@font-face {
-    font-family: retroFont;
-    src: url("../fonts/arcade.ttf");
-}
-
-@font-face {
-    font-family: retroFont2;
-    src: url("../fonts/SF Atarian System Bold.ttf");
-}
-
-@font-face {
-    font-family: retroFont;
-    src: url("../fonts/arcade.ttf");
-}
-
-@font-face {
-    font-family: retroFont2;
-    src: url("../fonts/SF Atarian System Bold.ttf");
-}
-
 @font-face {
     font-family: forest1;
     src: url("../fonts/JFWilwod.ttf");
@@ -62,13 +28,8 @@ h1 {
     margin: 10px;
 }
 /*   text-shadow: 0 0 3px #FF0000, 0 0 5px #0000FF; */
-h3 {
-  /*font-family: 'Bungee Shade', cursive;*/
-    font-family: retroFont;
-  font-size: 1em;
-}
-#sideSection {
 
+#sideSection {
   width: 250px;
   height: 240px;
   display: inline-block;
@@ -86,7 +47,6 @@ h3 {
   background-size: contain;
   background-repeat: no-repeat;
   margin-left: 20px;
-  /*transform: scaleX(-1);*/
 }
 
 #bottom {
@@ -101,10 +61,7 @@ h3 {
   width: 300px;
   height: 100px;
   margin: 0 auto;
-  /*background-color: rgba(28, 81, 73, 0);*/
   background-color: white;
-  /*#1c5149;
-  rgba(28, 81, 73, 0);*/
   vertical-align: top;
   border-radius: 15px 15px 15px 15px;
 }
@@ -115,48 +72,16 @@ h3 {
   height: 40px;
 }
 
-/*
-#snake {
-  width: 100px;
-  height: 100px;
-  text-align: right;
-}
-
-#snakeSection {
-
-  width: 250px;
-  height: 240px;
-  display: inline-block;
-  vertical-align: bottom;
-}
-#snakeSeection img {
-  width: 100%;
-   transform: scaleX(-1);
-
-}
-
-#test {
-  width: 150px;
-  height: 110px;
-  display: inline-block;
-  vertical-align: top;
-  background-color: black;
-}*/
-
-
 #sideSectionContent {
   position: relative;
   left: 107px;
   top: 120px;
-
   width: 80px;
   height: 92px;
   padding: 0;
   margin: 0;
   vertical-align: top;
-  /*background-color: red;*/
 }
-
 
 #sideScoreP1, #sideScoreP2 {
   font-size: 2em;
@@ -168,10 +93,10 @@ h3 {
     -1px 1px 0 #DDD,
     1px 1px 0 #DDD;
 }
+
 #sideImgP1 {
   float: left;
   width: 50%;
-  /*background-color: green;*/
   height: 50px;
   background-image: url("../images/bunny.png");
   background-repeat: no-repeat;
@@ -180,17 +105,16 @@ h3 {
 }
 
 #snakeAwaitingTurn  {
-    text-align: center;
+  text-align: center;
 }
 #snakeAwaitingTurn img{
-      width: 72px;
-    height: 72px;
-    text-align: center;
+  width: 72px;
+  height: 72px;
+  text-align: center;
 }
 #sideImgP2 {
   float: left;
   width: 50%;
-  /*background-color: blue;*/
   height: 50px;
   background-image: url("../images/fox-new.png");
   background-repeat: no-repeat;
@@ -203,21 +127,18 @@ h3 {
   height: 200px;
 }
 body {
-    /*background-color: #668cff;*/
-      min-width: 785px;
+  min-width: 785px;
 }
-/* raining in the forest */
+
 #game {
   margin: 0 auto;
   min-width: 500px;
-  /*background-image: url("../images/bg-page.jpg");*/
-text-align: center;
-
+  text-align: center;
 }
+
 .messages {
   clear: left;
 }
-
 
 #player1Image {
   background-image: url("../images/bunny.png");
@@ -249,18 +170,6 @@ text-align: center;
   float: left;
 }
 
-/*//0.5 % margin each side.. so then height and width 32%?*/
-/*transparent bg withgimp*/
-
-/*#messages {
-  background-image: url("../images/monkey.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-  width: 250px;
-  height: 250px;
-}*/
-
-
 body {
   width: 80%;
   margin: 0 auto;
@@ -273,23 +182,14 @@ body {
   background-color: rgb(191, 191, 191);
 }
 
-
 .square{
-  /*box-sizing: border-box;*/
 
   height: 31.333%;
   width: 31.333%;
-  /*background-color: #00cc00;*/
   margin: 1%;
-  /*//margin-left: 0.5%;
-  margin-right: 0.5%;*/
   float: left;
-    /*border-radius: 5px 5px 5px 5px;*/
   border: 1px solid gray;
   transition: .3s;
-  /*margin: 0 auto;*/
-  /*box-shadow: inset 0 -1px 0 0 #046ca3, inset 0 1px 0 0 #046ca3, 0 1px 0 0 #046ca3, 0 -1px 0 0 #046ca3;*/
-
 }
 /*
 div:hover doesnt work for touch screens
@@ -304,7 +204,6 @@ div:hover doesnt work for touch screens
   border: 1px solid white;
 }
 
-
 .player2Choice {
   background-image: url("../images/fox-new.png");
   background-repeat: no-repeat;
@@ -314,22 +213,13 @@ div:hover doesnt work for touch screens
   border: 1px solid white;
 }
 
-@media (min-width: 40em) {
-  /* margin trick doesnt really work with floats */
-
-
-    .square {
-      /*margin-right: 3.333333%;*/
-    }
-    .square{
-      /*width: 30%;*/
-    }
-
-}
-
-@media (min-width: 80em) {
-  body {
-    /*background-color: plum;
-    width: 80%;*/
-  }
+footer {
+  text-align: center;
+  font-size: 0.75em;
+  color : white;
+  text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
 }
