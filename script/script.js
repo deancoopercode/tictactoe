@@ -83,12 +83,9 @@ function setUpGame() {
   $snakeGameOver.hide();
   $snakeSquareTaken.hide();
 
-  //computer player code.
   $snakePlayerSelection.show()
   $snakeAwaitingTurn.hide();
   numberOfPlayers = 0;
-  //switchPlayer();
-
 
   var noOfSquares = boardDepth * boardDepth;
   $board.empty();
@@ -106,7 +103,6 @@ function setUpGame() {
 }
 
 function squareMouseClick(event) {
-
 
   //is number of players not chosen yet?
   if (numberOfPlayers === 0) {
@@ -161,6 +157,7 @@ function continueGame() {
   var status = determineGameStatus();
   if (status != -1) {
     styleWinner(status.winner, status.selections);
+    startAnimation();
   }
   else {
     if (boardMoves === 9) {
@@ -216,14 +213,13 @@ function playerSelectionClick(event) {
     numberOfPlayers = 1;
   }
   else {
-    //2 player (humans)
     numberOfPlayers = 2;
   }
   switchPlayer();
 }
 
 setUpGame();
-
+animationInit();
 
 
 $('.playAgainButton').on('click', newGameClick);

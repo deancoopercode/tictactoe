@@ -6,8 +6,6 @@ var boardDepth = 3;
 var winning = [];
 var selectionsToWin = 3; //same as board depth
 
-//computer - NEED TO BLOCK WHEREVER PLAYER HAS 2 ALREADY.....
-
 function initValues() {
   winning.push([0,1,2]);
   winning.push([3,4,5]);
